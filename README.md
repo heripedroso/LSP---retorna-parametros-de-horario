@@ -88,7 +88,7 @@ Funcao retornaCargaHorariaETurno(Numero nCodHorario);
      cCargaHorariaDiaria.fecharCursor();  
      
      @ Se o horário possue 04 batidas @
-     Se(CodHog < 9996)
+     Se(nCodHorario < 9996)
      inicio
          Se(nQuartaBatida <> 0)
          inicio
