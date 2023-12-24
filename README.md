@@ -17,6 +17,7 @@ Definir Numero nToleranciaSaidaAntecipada;  @ Variável principal @
 Definir Numero nToleranciaAtraso;  @ Variável principal @
 Definir Numero nHoraEntradaToleranciaAntes; @ Variável principal - define se a marcação é valida ou não, pois marcações muito fora do horário não devem ser consideradas. @
 Definir Numero nHoraSaidaToleranciaApos;  @ Variável principal - define se a marcação é valida ou não, pois marcações muito fora do horário não devem ser consideradas. @
+Definir Numero nHoraMetadeDoPeriodo; @ Variável principal @
 
 Funcao retornaCargaHorariaETurno(Numero nCodHorario);
 { 
@@ -43,6 +44,7 @@ Funcao retornaCargaHorariaETurno(Numero nCodHorario);
      nToleranciaAtraso = 0;          
      nHoraEntradaToleranciaAntes = 0;
      nHoraSaidaToleranciaApos = 0;
+     nHoraMetadeDoPeriodo = 0;
      
      nHoraSaidaToleranciaAnterior = 0;     
 
@@ -110,6 +112,11 @@ Funcao retornaCargaHorariaETurno(Numero nCodHorario);
          fim;  
      fim;
      nMetadeCargaHorariaDiaria = nCargaHorariaDiaria/2;
+
+     @ É necessário saber se a batida é de entrada ou saída. Para isto, @       
+     @ devemos encontrar qual horas corresponde à metade da carga horária diária. @
+     @ Para os horários noturnos e de 24h, a metade é definida pela virada do 1º para o 2º dia.@     
+     nHoraMetadeDoPeriodo = nHoraEntrada + ((nHoraSaida-nHoraEntrada)/2);  @ Para ajudar na definição se a batida é na primeira metade ou na segunda metade do horário. @
 }
 ```
 
